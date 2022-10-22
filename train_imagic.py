@@ -401,7 +401,7 @@ def train():
 
     if accelerator.is_main_process:
         torch.save(target_embeddings.cpu(), os.path.join(args.output_dir, "target_embeddings.pt"))
-        torch.save(optimized_embeddings.cpu(), os.path.join(args.output_dir), "optimized_embeddings.pt")
+        torch.save(optimized_embeddings.cpu(), os.path.join(args.output_dir, "optimized_embeddings.pt"))
         with open(os.path.join(args.output_dir, "target_text.txt"), "w") as f:
             f.write(args.target_text)
     
