@@ -230,7 +230,7 @@ def train():
 
 
     # Load the tokenizer
-    tokenizer = CLIPTokenizer.from_pretrained(args.tokenizer)
+    tokenizer = CLIPTokenizer.from_pretrained(args.pretrained_model_name_or_path, subfolder="tokenizer", use_auth_token=True)
 
 
     # Load models and create wrapper for stable diffusion
@@ -306,9 +306,9 @@ def train():
     text_ids = tokenizer(
         args.target_text,
         padding="max_length",
-        truncation="True",
+        truncation=True,
         max_length=tokenizer.model_max_length,
-        return_tensors="pt"
+        return_tensors="pt",
     ).input_ids
 
 
